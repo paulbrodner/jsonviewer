@@ -4,7 +4,7 @@ build:
 	docker build -t $(IMAGE) .
 
 start: stop
-	docker run -d -p 8080:80 --name jsonviewer $(IMAGE)
+	docker run -d -p 8080:8080 --name jsonviewer $(IMAGE)
 
 stop:
 	@docker kill jsonviewer || echo Nothing to kill!
