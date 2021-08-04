@@ -1,6 +1,7 @@
-FROM centos:8
-RUN yum install -y epel-release httpd git
-ADD . /var/www/html
+FROM httpd:alpine3.14
+ADD . /usr/local/apache2/htdocs/
 
-USER daemon
-ENTRYPOINT ["/usr/sbin/apachectl", "-d", "/etc/httpd/conf", "-f", "httpd.conf", "-e", "info", "-DFOREGROUND"]
+RUN chown -R www-data:www-data /usr/local/apache2/htdocs/ \
+    && chown -R www-data:www-data /usr/local/apache2
+
+USER www-data

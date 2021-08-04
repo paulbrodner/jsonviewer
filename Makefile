@@ -3,7 +3,7 @@ IMAGE:=paulbrodner/jsonviewer
 build:
 	docker build -t $(IMAGE) .
 
-start: 
+start: stop
 	docker run -d -p 8080:80 --name jsonviewer $(IMAGE)
 
 stop:
